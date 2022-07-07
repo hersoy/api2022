@@ -23,7 +23,8 @@ public class Get05 extends HerOkuAppBaseUrl {
     @Test
     public void get01() {
         // 1. step: set the url
-        spec.pathParam("first","booking").queryParams("firstname","Aaron","lastname","Chen");
+        spec.pathParam("first","booking").
+                queryParams("firstname","Mark","lastname","Jones");
 
         // 2. step: set the expected data
 
