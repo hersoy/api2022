@@ -57,7 +57,7 @@ public class Get08 extends JsonPlaceHolderBaseUrl {
         // 3. step: send the request and get response
         Response response = given().spec(spec).when().get("{first}/{second}");
         response.as(HashMap.class);     // response'ları hasMap'a cevirdik
-        Map<String, Object> actualData = response.as(HashMap.class);
+        Map<String, Object> actualData = response.as(HashMap.class); // hashMap'a cevirdigimiz bu datalari bir Map'a atadik
 
         // 4. Step: Do assertion
         assertEquals(expectedData.get("userId"), actualData.get("userId"));
