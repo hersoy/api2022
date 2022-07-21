@@ -56,7 +56,7 @@ public class Post04Pojo extends JsonPlaceHolderBaseUrl {
 
         //2. Step: Set the expected data
         BookingDatesPojo bookingDates = new BookingDatesPojo("2021-09-21", "2021-12-21");
-        BookingPojo bookingPojo = new BookingPojo("Ali","Can",999, true,bookingDates,"Breakfast with white tea, Dragon juice");
+        BookingPojo bookingPojo = new BookingPojo("Ali", "Can", 999, true, bookingDates, "Breakfast with white tea, Dragon juice");
 
         //3. Step: Send POST Request and Get the Response
         Response response = given().spec(spec).contentType(ContentType.JSON).body(bookingPojo).when().post("/{first}");
@@ -65,8 +65,9 @@ public class Post04Pojo extends JsonPlaceHolderBaseUrl {
         //4. Step: Do Assertion
         BookingResponseBodyPojo actualPojo = response.as(BookingResponseBodyPojo.class);
 
-        assertEquals(200,response.getStatusCode());
-        assertEquals(bookingPojo.getFirstname(),actualPojo.getBooking().getFirstname());
+        assertEquals(200, response.getStatusCode());
+
+        assertEquals(bookingPojo.getFirstname(), actualPojo.getBooking().getFirstname());
         assertEquals(bookingPojo.getLastname(), actualPojo.getBooking().getLastname());
         assertEquals(bookingPojo.getTotalPrice(), actualPojo.getBooking().getTotalPrice());
         assertEquals(bookingPojo.getDepositpaid(), actualPojo.getBooking().getDepositpaid());
