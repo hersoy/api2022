@@ -4,6 +4,7 @@ import base_urls.JsonPlaceHolderBaseUrl;
 import io.restassured.response.Response;
 import org.junit.Test;
 import pojos.JsonPlaceHolderPojo;
+import test_data.jsonplaceHolderTestData;
 import utils.JsonUtil;
 
 import java.util.HashMap;
@@ -36,14 +37,8 @@ public class Get14ObjectMapper extends JsonPlaceHolderBaseUrl {
         spec.pathParams("first", "todos", "second", 198);
 
         //2. step: set the expected data
-
-        String expectedData = "{\n" +
-                "\"userId\": 10,\n" +
-                "\"id\": 198,\n" +
-                "\"title\": \"quis eius est sint explicabo\",\n" +
-                "\"completed\": true\n" +
-                "  }";                  // yukaridaki json body'i string olarak kullanacagimizdan
-        // bir konteynır'a atama yapip asagida kullandik
+        jsonplaceHolderTestData json = new jsonplaceHolderTestData();
+        String expectedData = json.expectedDataString(10,"quis eius est sint explicabo", true);
 
         HashMap<String, Object> expectedDataMap = JsonUtil.convertJsonToJavaObject(expectedData, HashMap.class);
 
@@ -67,13 +62,8 @@ public class Get14ObjectMapper extends JsonPlaceHolderBaseUrl {
         spec.pathParams("first", "todos", "second", 198);
 
         //2. step: set the expected data
-        String expectedData = "{\n" +
-                "\"userId\": 10,\n" +
-                "\"id\": 198,\n" +
-                "\"title\": \"quis eius est sint explicabo\",\n" +
-                "\"completed\": true\n" +
-                "  }";                   // yukaridaki json body'i string olarak kullanacagimizdan
-        // bir konteynır'a atama yapip asagida kullandik
+        jsonplaceHolderTestData json = new jsonplaceHolderTestData();
+        String expectedData = json.expectedDataString(10,"quis eius est sint explicabo", true);
 
         JsonPlaceHolderPojo expectedDataPojo = JsonUtil.convertJsonToJavaObject(expectedData, JsonPlaceHolderPojo.class);
 
@@ -81,13 +71,13 @@ public class Get14ObjectMapper extends JsonPlaceHolderBaseUrl {
         Response response = given().spec(spec).when().get("/{first}/{second}");
 
         //4. step: Do assertion
-        JsonPlaceHolderPojo actualDataPojo = JsonUtil.convertJsonToJavaObject(response.toString(), JsonPlaceHolderPojo.class);
+        JsonPlaceHolderPojo actualDataPojo = JsonUtil.convertJsonToJavaObject(response.asString(), JsonPlaceHolderPojo.class);
 
         assertEquals(200, response.getStatusCode());
 
         assertEquals(expectedDataPojo.getUserId(), actualDataPojo.getUserId());
         assertEquals(expectedDataPojo.getTitle(), actualDataPojo.getTitle());
-        assertEquals(expectedDataPojo.getCamplated(), actualDataPojo.getCamplated());
+        assertEquals(expectedDataPojo.getCompleted(), actualDataPojo.getCompleted());
 
 
     }

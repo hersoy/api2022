@@ -17,7 +17,7 @@ public class JsonUtil {
         T javaResult = null;
 
         try {
-            javaResult = mapper.readValue(json,cls);
+            javaResult = mapper.readValue(json, cls);
         } catch (IOException e) {
             e.printStackTrace();
         }

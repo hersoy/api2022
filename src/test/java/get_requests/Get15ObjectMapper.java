@@ -57,12 +57,12 @@ public class Get15ObjectMapper extends HerOkuAppBaseUrl {
 
         //3. step: send the Get request and get the response
         Response response = given().spec(spec).when().contentType(ContentType.JSON).get("/{first}/{second}");
-        //response.prettyPrint();
+        response.prettyPrint();
 
         //4. step: Do assertion
 
-        BookingPojo actualDataPojo = JsonUtil.convertJsonToJavaObject(response.toString(), BookingPojo.class);
-/*
+        BookingPojo actualDataPojo = JsonUtil.convertJsonToJavaObject(response.asString(), BookingPojo.class);
+
         // Hard Assert
         assertEquals(200, response.getStatusCode());
         assertEquals(expectedDataPojo.getFirstname(), actualDataPojo.getFirstname());
@@ -74,8 +74,8 @@ public class Get15ObjectMapper extends HerOkuAppBaseUrl {
         assertEquals(expectedDataPojo.getBookingdates().getCheckout(), actualDataPojo.getBookingdates().getCheckout());
 
 
+/*
 
- */
         // Soft Assertion
             //1. SoftAsset objesi olustur
         SoftAssert softAssert = new SoftAssert();
@@ -92,6 +92,6 @@ public class Get15ObjectMapper extends HerOkuAppBaseUrl {
             //3. assertAll() metodunu calistir
         softAssert.assertAll();
 
-
+*/
     }
 }

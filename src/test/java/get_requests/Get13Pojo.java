@@ -20,13 +20,13 @@ public class Get13Pojo extends GoRestBaseUrl {
     And
     Response body should be like
             {
-            "meta": null,
+           "meta": null,
             "data": {
                 "id": 2508,
-                "name": "Akshita Nehru",
-                "email": "nehru_akshita@jast.info",
+                "name": "Fr. Dhanvin Malik",
+                "email": "dhanvin_fr_malik@runolfsson-braun.com",
                 "gender": "female",
-                "status": "active"
+                "status": "inactive"
             }
         }
 
@@ -35,10 +35,10 @@ public class Get13Pojo extends GoRestBaseUrl {
     @Test
     public void getPojo01() {
         // 1. step: set the url
-        spec.pathParams("first","users", "second", 2508);
+        spec.pathParams("first", "users", "second", 2508);
 
         // 2. step: set the expected data
-        GoRestDataPojo gorest = new GoRestDataPojo(2508, "Akshita Nehru", "nehru_akshita@jast.info", "female", "active");
+        GoRestDataPojo gorest = new GoRestDataPojo(2508, "Fr. Dhanvin Malik", "dhanvin_fr_malik@runolfsson-braun.com", "female", "inactive");
         GoRestPojo goRestPojo = new GoRestPojo(null, gorest);
 
         // 3. step: send the request and get the response
@@ -55,7 +55,6 @@ public class Get13Pojo extends GoRestBaseUrl {
         assertEquals(goRestPojo.getData().getEmail(), actualDataPojo.getData().getEmail());
         assertEquals(goRestPojo.getData().getGender(), actualDataPojo.getData().getGender());
         assertEquals(goRestPojo.getData().getStatus(), actualDataPojo.getData().getStatus());
-
 
 
     }

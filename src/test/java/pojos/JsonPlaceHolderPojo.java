@@ -37,7 +37,7 @@ public class JsonPlaceHolderPojo {
         return title;
     }
 
-    public Boolean getCamplated() {
+    public Boolean getCompleted() {
         return completed;
     }
 
@@ -49,7 +49,7 @@ public class JsonPlaceHolderPojo {
         this.title = title;
     }
 
-    public void setCamplated(Boolean completed) {
+    public void setCompleted(Boolean completed) {
         this.completed = completed;
     }
 
@@ -59,7 +59,7 @@ public class JsonPlaceHolderPojo {
         return "JsonPlaceHolderPojo{" +
                 "userId=" + userId +
                 ", title='" + title + '\'' +
-                ", camplated='" + completed + '\'' +
+                ", completed='" + completed + '\'' +
                 '}';
     }
     // farkli key-value ikililerinin uyusmazligini @JsonIgnoreProperties(ignoreUnknown = true)
